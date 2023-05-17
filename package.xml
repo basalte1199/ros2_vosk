@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>ros2_vosk</name>
+  <version>2.1.21</version>
+  <description>ROS2 wrapper for Vosk</description>
+  <url type="website">https://pypi.python.org/pypi/vosk/</url>
+
+  <maintainer email="contact@alphacephei.com">Alpha Cephei Inc.</maintainer>
+  <maintainer email="an.antikatzidis@gmail.com">Angelo Antikatzidis</maintainer>
+  <license>Apache 2</license>
+  <author email="an.antikatzidis@gmail.com">Angelo Antikatzidis.</author>
+  <author email="contact@alphacephei.com">Alpha Cephei Inc.</author>
+  <author email="agrigo2001@yahoo.com.au">Adrian Grigo</author>
+
+  <exec_depend>std_msgs</exec_depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
