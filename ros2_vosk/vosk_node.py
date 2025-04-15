@@ -36,7 +36,7 @@ from ros2_vosk import vosk_ros_model_downloader as downloader
 class vosk_sr(Node):
     def __init__(self):
         super().__init__('vosk')
-        self.declare_parameter('vosk/model', "vosk-model-small-en-us-0.15")
+        self.declare_parameter('vosk/model', "vosk-model-en-us-0.22")
         model_name = self.get_parameter('vosk/model').get_parameter_value().string_value
 
         package_path = get_package_share_directory('ros2_vosk')
@@ -107,10 +107,11 @@ class vosk_sr(Node):
 
             with sd.RawInputStream(samplerate=self.samplerate, blocksize=16000, device=self.input_dev_num, dtype='int16',
                                channels=1, callback=self.stream_callback):
-                self.get_logger().debug('Started recording')
+                self.get_logger().debug('Started customed recording')
                 
-                rec = vosk.KaldiRecognizer(self.model, self.samplerate)
-                print("Vosk is ready to listen!")
+                custom_vocabulary = ["coke", "green tea", "orange juice", "soda", "wine","water"]
+                rec = vosk.KaldiRecognizer(self.model, self.samplerate,json.dumps(custom_vocabulary))
+                print("Vosk is ready to listen!!!!!!!!!!!!!!!!!!")
                 isRecognized = False
                 isRecognized_partially = False
                 
