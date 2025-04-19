@@ -77,7 +77,7 @@ class vosk_sr(Node):
 
     def srv_callback(self, request, response):
         self.model_name = request.model_name
-        custom_vocabulary = request.custom_vocabulary
+        custom_vocabulary = request.custom_vocaburary
         try:
 
             with sd.RawInputStream(samplerate=self.samplerate, blocksize=16000, device=self.input_dev_num, dtype='int16',
@@ -190,7 +190,7 @@ def main(args=None):
     rclpy.init(args=args)
     rec = vosk_sr()
     try:
-        rclpy.spin()
+        rclpy.spin(rec)
     except KeyboardInterrupt as e:
         rec.get_logger().fatal("Error occurred! Stopping the vosk speech recognition node...")
         #rclpy.sleep(1)

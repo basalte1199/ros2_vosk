@@ -23,6 +23,7 @@ setup(
             'tts_engine=ros2_vosk.tts_engine:main',
             'vosk_node=ros2_vosk.vosk_node:main',
             'vosk_ros_model_downloader=ros2_vosk.vosk_ros_model_downloader:main',
+            'vosk_service=ros2_vosk.vosk_service:main',
         ],
     },
 )
