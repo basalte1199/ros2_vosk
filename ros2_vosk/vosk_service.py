@@ -77,7 +77,7 @@ class vosk_sr(Node):
 
     def srv_callback(self, request, response):
         self.model_name = request.model_name
-        custom_vocabulary = request.custom_vocaburary
+        custom_vocabulary = request.custom_vocabulary
         try:
 
             with sd.RawInputStream(samplerate=self.samplerate, blocksize=16000, device=self.input_dev_num, dtype='int16',
@@ -138,9 +138,10 @@ class vosk_sr(Node):
                             string_msg.data = result_text
                             self.pub_final.publish(string_msg)
                             """
-                            if result_text in custom_vocabulary:
+                            found = [kw for kw in custom_vocabulary if kw in result_text.lower()]
+                            if len(found) > 0:
                                 response.is_speech_recognized = True
-                                response.final_result = result_text
+                                response.final_result = found[0]
                                 self.get_logger().info(f"Recognized word: {result_text}")
                                 return response
                             isRecognized = False
